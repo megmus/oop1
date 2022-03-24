@@ -15,6 +15,7 @@ public interface IStaffRO {
     String toString();
 
     enum Staffstatus {
+
         PROFESSOR(1, "Student") {
             @Override
             public boolean isProfessor() {

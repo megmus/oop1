@@ -15,7 +15,7 @@ public class EnumApplication {
         final EnumClass enumClass1 = EnumClass.ENUM_CLASS_1;
         final EnumClass enumClass2 = EnumClass.ENUM_CLASS_2;
 
-        boolean comparing1 = enumClass1 == EnumClass.ENUM_CLASS_1;
+        boolean comparing1 = (enumClass1 == EnumClass.ENUM_CLASS_1);
         System.out.println("Enum Class 1");
         System.out.println("hashCode - refenrece/variable: " + enumClass1.hashCode());
         System.out.println("hashCode - orginal: "+ EnumClass.ENUM_CLASS_1.hashCode());
