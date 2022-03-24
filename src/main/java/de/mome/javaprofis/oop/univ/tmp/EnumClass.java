@@ -33,7 +33,7 @@ public class EnumClass implements Comparable<EnumClass> {
     @Override
     public int compareTo(EnumClass enumClass) {
         if (enumClass == null) {
-            return 1;
+            return this.getCode();
         }
         return (this.getCode() - enumClass.code);
     }
