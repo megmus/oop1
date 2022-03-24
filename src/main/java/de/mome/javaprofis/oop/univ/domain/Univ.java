@@ -21,7 +21,7 @@ public class Univ implements IUniv {
     public UniStaff addNewInstructor(final String firstname, final String lastname, final String birthdate, final Faculty faculty) {
         final Instructor newInstructor = new Instructor(firstname, lastname, birthdate, faculty.value(), office(faculty));
         UNI_MEMBERS.add(newInstructor);
-        return null;
+        return new UniStaff(newInstructor);
     }
 
     @Override
