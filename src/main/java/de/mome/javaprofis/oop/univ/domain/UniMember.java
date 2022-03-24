@@ -184,13 +184,4 @@ abstract class UniMember implements IUniMember {
         }
     }
 
-    //overloading examples
-    /*public void draw(int x, int y) {
-        System.out.println("draw method with int parameter types");
-    }
-
-    public void draw(Integer x, Integer y) {
-        System.out.println("draw method with Integer parameter types");
-    }*/
-
 }
