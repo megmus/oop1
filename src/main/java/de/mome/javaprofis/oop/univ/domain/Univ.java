@@ -5,6 +5,8 @@ import org.apache.commons.lang3.RandomUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Univ implements IUniv {
 
@@ -28,15 +30,24 @@ public class Univ implements IUniv {
     public List<IStaffRO> currentStaff() {
         final List<IStaffRO> staff = new ArrayList<>(UNI_MEMBERS.size());
         final Iterator<IUniMember> iterator = UNI_MEMBERS.iterator();
-        while(iterator.hasNext()){
-            staff.add(new UniStaff(iterator.next())) ;
+        while (iterator.hasNext()) {
+            staff.add(new UniStaff(iterator.next()));
         }
         return staff;
     }
 
     @Override
-    public List<IStaffRO> staffByStat(IStaffRO.Staffstatus status) {
-        return null;
+    public List<IStaffRO> staffByStat(final IStaffRO.Staffstatus status) {
+        final List<IStaffRO> staffWithStatus = new ArrayList<>();
+        final Iterator<IUniMember> iterator = UNI_MEMBERS.stream().filter(areStudents(status)).toList().iterator();
+        while (iterator.hasNext()) {
+            staffWithStatus.add(new UniStaff(iterator.next()));
+        }
+        return staffWithStatus;
+    }
+
+    private Predicate<? super IUniMember> areStudents(final IStaffRO.Staffstatus status) {
+        return iUniMember -> iUniMember.currentStatus() == status;
     }
 
     public String office(final Faculty faculty) {

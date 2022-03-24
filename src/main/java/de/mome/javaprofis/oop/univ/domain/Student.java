@@ -15,7 +15,6 @@ final class Student extends UniMember {
 
     Student(final String firstname, final String lastname, final String birthdate) {
         super(firstname, lastname, birthdate);
-        //changeMatriculation();
         this.matriculation = RandomUtils.nextLong(1, 99999);
         this.semester = MIN_SEMESTER;
     }
@@ -39,7 +38,7 @@ final class Student extends UniMember {
     }
 
     public IStaffRO.Staffstatus currentStatus() {
-        return IStaffRO.Staffstatus.PROFESSOR;
+        return IStaffRO.Staffstatus.STUDENT;
     }
 
     int currentSemester() {
