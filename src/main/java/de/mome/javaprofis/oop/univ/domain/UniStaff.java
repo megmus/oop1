@@ -4,9 +4,9 @@ import java.text.SimpleDateFormat;
 
 final class UniStaff implements IStaffRO {
 
-    private UniMember instance;
+    private final IUniMember instance;
 
-    public UniStaff(final UniMember uniMember) {
+    public UniStaff(final IUniMember uniMember) {
         instance = uniMember;
     }
 
@@ -31,8 +31,8 @@ final class UniStaff implements IStaffRO {
     }
 
     @Override
-    public String role() {
-        return instance.role().toString();
+    public String currentStatus() {
+        return instance.currentStatus().toString();
     }
 
     public String toString() {

@@ -10,7 +10,7 @@ import java.util.Date;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 
-abstract class UniMember {
+abstract class UniMember implements IUniMember {
 
     private String firstname;
     private String lastname;
@@ -25,15 +25,11 @@ abstract class UniMember {
         updateBirthdate(birthdate);
     }
 
-    public abstract long id();
-
-    public abstract IStaffRO.Staffstatus role();
-
     public String firstname() {
         return firstname;
     }
 
-    public void updateFirstname(final String firstname) {
+    protected void updateFirstname(final String firstname) {
         if (StringUtils.isBlank(firstname)) {
             throw new IllegalArgumentException("Firstname value not allowed: " + firstname);
         }
@@ -52,18 +48,18 @@ abstract class UniMember {
     }
 
     public Date birthdate() {
-        return birthdate;
+        return (birthdate == null) ? null : new Date(birthdate.getTime());
     }
 
-    public void updateBirthdate(String birthdate) {
+    protected void updateBirthdate(String birthdate) {
         if (StringUtils.isBlank(birthdate)) {
             throw new IllegalArgumentException("Birthdate value not allowed: " + birthdate);
         }
         if (!isAdult(birthdate)) {
-            throw new IllegalArgumentException("Person too young: " + birthdate);
+            throw new IllegalArgumentException("Member too young: " + birthdate);
         }
-        if(!isApt(birthdate)) {
-            throw new IllegalArgumentException("Person not apt: " + birthdate);
+        if (!isApt(birthdate)) {
+            throw new IllegalArgumentException("Member not apt: " + birthdate);
         }
         try {
             this.birthdate = DateUtils.parseDate(birthdate, BIRTHDATE_FORMATTER);
@@ -91,30 +87,40 @@ abstract class UniMember {
     }
 
     public void createAddress(final String street, final String city, final String zipcode) {
-        if (address == null) {
-            address = new Address(street, city, zipcode);
-        } else {
-            address.updateCity(city);
-            address.updateStreet(street);
-            address.updateZipcode(zipcode);
+        if (address != null) {
+            throw new IllegalStateException("One address already exists");
         }
+
+        address = new Address(street, city, zipcode);
+        address.updateCity(city);
+        address.updateStreet(street);
+        address.updateZipcode(zipcode);
     }
 
-    public String street() {
+    public void updateAddress(final String street, final String city, final String zipcode) {
+        if (address == null) {
+            throw new IllegalStateException("No address exists");
+        }
+        address.updateCity(city);
+        address.updateStreet(street);
+        address.updateZipcode(zipcode);
+    }
+
+    public String currentStreet() {
         if (address == null) {
             throw new IllegalStateException("No address created or existed");
         }
         return address.street();
     }
 
-    public String city() {
+    public String currentCity() {
         if (address == null) {
             throw new IllegalStateException("No address created or existed");
         }
         return address.city();
     }
 
-    public String zipcode() {
+    public String currentZipcode() {
         if (address == null) {
             throw new IllegalStateException("No address created or existed");
         }
@@ -126,17 +132,8 @@ abstract class UniMember {
                 "Firstname: " + firstname() + "\n" +
                 "Lastname: " + lastname() + "\n" +
                 "Birthdate: " + new SimpleDateFormat(BIRTHDATE_FORMATTER).format(birthdate()) +
-                "" + ((address != null) ? "\n" + address.toString() : "");
+                "" + ((address != null) ? "\n" + address : "");
     }
-
-    public void draw(int x, int y) {
-        System.out.println("draw method with int parameter types");
-    }
-
-    public void draw(Integer x, Integer y) {
-        System.out.println("draw method with Integer parameter types");
-    }
-
 
     class Address {
         private String street;
@@ -186,4 +183,14 @@ abstract class UniMember {
             return "Address: " + address.street() + ", " + address.city() + " " + address.zipcode();
         }
     }
+
+    //overloading examples
+    /*public void draw(int x, int y) {
+        System.out.println("draw method with int parameter types");
+    }
+
+    public void draw(Integer x, Integer y) {
+        System.out.println("draw method with Integer parameter types");
+    }*/
+
 }

@@ -71,7 +71,7 @@
             <archive>
               <manifest>
                 <addClasspath>true</addClasspath>
-                <mainClass>de.mome.javaprofis.oop.App</mainClass>
+                <mainClass>de.mome.javaprofis.oop.UniApplication</mainClass>
                 <classpathPrefix>lib/</classpathPrefix>
               </manifest>
             </archive>
@@ -91,7 +91,7 @@
               <configuration>
                 <transformers>
                   <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                    <mainClass>de.mome.javaprofis.oop.App</mainClass>
+                    <mainClass>de.mome.javaprofis.oop.UniApplication</mainClass>
                   </transformer>
                 </transformers>
               </configuration>

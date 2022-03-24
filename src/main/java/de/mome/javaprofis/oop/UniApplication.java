@@ -9,9 +9,7 @@ import java.util.List;
 /**
  * Hello world!
  */
-public class App {
-
-    private long matriculation = 1234L;
+public class UniApplication {
 
     public static void main(String[] args) {
         System.out.println("Hello World!" + "\n");
@@ -49,10 +47,11 @@ public class App {
         studentsList.add(new Student("ret","res", "12.05.1998"));
         System.out.println("Students list size after clear: " + students.currentValues().size());*/
 
-        final Univ tum = new Univ();
-        tum.addNewStudent("Mostapha", "Megaiz", "20.08.1973");
-        tum.addNewStudent("Angila", "Paikar", "17.07.1976");
-        tum.addNewInstructor("Johann", "Schlichter", "01.01.1950", IUniv.Faculty.COMPUTESC);
+        final IUniv tum = new Univ();
+        final IStaffRO mome = tum.addNewStudent("Mostapha", "Megaiz", "20.08.1973");
+        final IStaffRO angilae = tum.addNewStudent("Angila", "Paikar", "17.07.1976");
+        final IStaffRO schlichter = tum.addNewInstructor("Johann", "Schlichter", "01.01.1950", IUniv.Faculty.COMPUTESC);
+
 
         final List<IStaffRO> uniStaff = tum.currentStaff();
         uniStaff.stream().forEach(univMember -> System.out.println(univMember.toString()));
@@ -65,6 +64,8 @@ public class App {
     }
 
     class InternalApp {
+        final long matriculation = 1234L;
+
         long getMatriculation() {
             return matriculation;
         }

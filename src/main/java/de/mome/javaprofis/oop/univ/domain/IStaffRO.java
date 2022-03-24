@@ -10,7 +10,7 @@ public interface IStaffRO {
 
     String birthdate();
 
-    String role();
+    String currentStatus();
 
     String toString();
 

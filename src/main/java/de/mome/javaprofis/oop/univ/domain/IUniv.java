@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface IUniv {
 
-    UniStaff addNewStudent(final String firstname, final String lastname, final String birthdate);
+    IStaffRO addNewStudent(final String firstname, final String lastname, final String birthdate);
 
-    UniStaff addNewInstructor(final String firstname, final String lastname, final String birthdate, final Faculty faculty);
+    IStaffRO addNewInstructor(final String firstname, final String lastname, final String birthdate, final Faculty faculty);
 
     List<IStaffRO> currentStaff();
 
@@ -39,7 +39,7 @@ public interface IUniv {
                 return "PHYSIK";
             }
         };
-        private String code;
+        private final String code;
 
         private Faculty(String code) {
             this.code = code;
