@@ -1,5 +1,6 @@
 package de.mome.javaprofis.oop;
 
+import de.mome.javaprofis.oop.univ.data.StaffVO;
 import de.mome.javaprofis.oop.univ.domain.IStaffRO;
 import de.mome.javaprofis.oop.univ.domain.IUniv;
 import de.mome.javaprofis.oop.univ.domain.Univ;
@@ -14,8 +15,8 @@ public class UniApplication {
     public static void main(String[] args) {
 
         final IUniv tum = new Univ();
-        final IStaffRO mome = tum.addNewStudent("Mostapha", "Megaiz", "20.08.1973");
-        final IStaffRO angilae = tum.addNewStudent("Angila", "Paikar", "17.07.1976");
+        final IStaffRO mome = tum.addNewStudent(new StaffVO("Mostapha", "Megaiz", "20.08.1973"));
+        final IStaffRO angilae = tum.addNewStudent(new StaffVO("Angila", "Paikar", "17.07.1976"));
         final IStaffRO schlichter = tum.addNewInstructor("Johann", "Schlichter", "01.01.1950", IUniv.Faculty.COMPUTESC);
 
 

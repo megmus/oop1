@@ -1,5 +1,7 @@
 package de.mome.javaprofis.oop.univ.domain;
 
+import de.mome.javaprofis.oop.univ.data.StaffVO;
+import lombok.NonNull;
 import org.apache.commons.lang3.RandomUtils;
 
 import java.util.ArrayList;
@@ -13,8 +15,8 @@ public class Univ implements IUniv {
     private final static List<IUniMember> UNI_MEMBERS = new ArrayList<>();
 
     @Override
-    public IStaffRO addNewStudent(final String firstname, final String lastname, final String birthdate) {
-        final Student newStudent = new Student(firstname, lastname, birthdate);
+    public IStaffRO addNewStudent(@NonNull final StaffVO staffVO) {
+        final Student newStudent = new Student(staffVO.getFirstname(), staffVO.getLastname(), staffVO.getBirthdate());
         UNI_MEMBERS.add(newStudent);
         return new UniStaff(newStudent);
     }

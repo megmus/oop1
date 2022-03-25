@@ -5,10 +5,7 @@ import de.mome.javaprofis.oop.univ.tmp.EnumClass;
 import de.mome.javaprofis.oop.univ.tmp.MySeasonEnum;
 
 import java.nio.file.FileSystemNotFoundException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class EnumApplication {
 
@@ -34,6 +31,10 @@ public class EnumApplication {
         System.out.println("Enum standard type sort");
         enumStatus.stream().sorted().toList().forEach(staffStatus -> System.out.println(staffStatus.ordinal()));
 
+        final EnumSet<MySeasonEnum> seasons = EnumSet.allOf(MySeasonEnum.class);
 
+        System.out.println("seasons: " + seasons);
+
+        System.out.println("seasons without winter: " + EnumSet.range(MySeasonEnum.SPRING, MySeasonEnum.SUMMER));
     }
 }

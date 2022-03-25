@@ -1,12 +1,14 @@
 package de.mome.javaprofis.oop.univ.domain;
 
+import de.mome.javaprofis.oop.univ.data.StaffVO;
+import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
 public interface IUniv {
 
-    IStaffRO addNewStudent(final String firstname, final String lastname, final String birthdate);
+    IStaffRO addNewStudent(@NonNull final StaffVO staffVO);
 
     IStaffRO addNewInstructor(final String firstname, final String lastname, final String birthdate, final Faculty faculty);
 
