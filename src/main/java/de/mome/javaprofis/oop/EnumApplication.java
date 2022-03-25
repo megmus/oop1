@@ -2,6 +2,7 @@ package de.mome.javaprofis.oop;
 
 import de.mome.javaprofis.oop.univ.domain.IStaffRO;
 import de.mome.javaprofis.oop.univ.tmp.EnumClass;
+import de.mome.javaprofis.oop.univ.tmp.MySeasonEnum;
 
 import java.nio.file.FileSystemNotFoundException;
 import java.util.HashSet;
@@ -60,5 +61,13 @@ public class EnumApplication {
 
         System.out.println("Enum standard type sort");
         enumStatus.stream().sorted().toList().forEach(staffStatus -> System.out.println(staffStatus.getCode()));
+
+        final MySeasonEnum spring = MySeasonEnum.SPRING;
+        System.out.println("spring name: " + spring.name());
+        System.out.println("spring ordinal: " + spring.ordinal());
+        final MySeasonEnum winter = MySeasonEnum.WINTER;
+        System.out.println("winter name: " + winter.name());
+        System.out.println("winter ordinal: " + winter.ordinal());
+
     }
 }
