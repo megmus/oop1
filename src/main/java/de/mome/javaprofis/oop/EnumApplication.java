@@ -16,23 +16,6 @@ public class EnumApplication {
         final EnumClass enumClass1 = EnumClass.ENUM_CLASS_1;
         final EnumClass enumClass2 = EnumClass.ENUM_CLASS_2;
 
-        boolean comparing1 = (enumClass1 == EnumClass.ENUM_CLASS_1);
-        System.out.println("Enum Class 1");
-        System.out.println("hashCode - refenrece/variable: " + enumClass1.hashCode());
-        System.out.println("hashCode - orginal: "+ EnumClass.ENUM_CLASS_1.hashCode());
-        System.out.println("compareTo - not direct: " + comparing1);
-        System.out.println("compareTo - direct: " + enumClass1.compareTo(EnumClass.ENUM_CLASS_1));
-        System.out.println("compareTo 3 - direct: " + enumClass1.compareTo(EnumClass.ENUM_CLASS_3));
-
-        boolean comparing2 = enumClass2.equals(EnumClass.ENUM_CLASS_2);
-
-
-        System.out.println("Enum Class 2");
-        System.out.println("hashCode - refenrece/variable: " + enumClass2.hashCode());
-        System.out.println("hashCode - orginal: "+ EnumClass.ENUM_CLASS_2.hashCode());
-        System.out.println("compareTo - no direct: " + comparing2);
-        System.out.println("compareTo - direct: " + enumClass2.compareTo(EnumClass.ENUM_CLASS_2));
-
         final Set<EnumClass> enumClassSet = new TreeSet<>();
         enumClassSet.add(EnumClass.ENUM_CLASS_3);
         enumClassSet.add(enumClass1);
@@ -48,26 +31,9 @@ public class EnumApplication {
         enumStatus.add(IStaffRO.Staffstatus.STUDENT);
         enumStatus.add(IStaffRO.Staffstatus.PROFESSOR);
 
-        System.out.println("Enum standard type tutor");
-        System.out.println("hashCode - refenrece/variable" + tutor.hashCode());
-        System.out.println("hashCode - orginal: "+ IStaffRO.Staffstatus.TUTOR.hashCode());
-        System.out.println("compareTo - direct: " + tutor.compareTo(IStaffRO.Staffstatus.TUTOR));
-//        System.out.println("compareTo null- direct: " + tutor.compareTo(null));
-        System.out.println("name: " + tutor.name());
-        System.out.println("ordinal of tutor: " + tutor.ordinal() + " - code of tutor: " + tutor.getCode());
-        System.out.println("ordinal of professor: " + IStaffRO.Staffstatus.PROFESSOR.ordinal() + " - code of professor: " + IStaffRO.Staffstatus.PROFESSOR.getCode());
-        System.out.println("ordinal of student: " + IStaffRO.Staffstatus.STUDENT.ordinal() + " - code of student: " + IStaffRO.Staffstatus.STUDENT.getCode());
-        System.out.println("Constable name: " + tutor.describeConstable().get().constantName());
-
         System.out.println("Enum standard type sort");
-        enumStatus.stream().sorted().toList().forEach(staffStatus -> System.out.println(staffStatus.getCode()));
+        enumStatus.stream().sorted().toList().forEach(staffStatus -> System.out.println(staffStatus.ordinal()));
 
-        final MySeasonEnum spring = MySeasonEnum.SPRING;
-        System.out.println("spring name: " + spring.name());
-        System.out.println("spring ordinal: " + spring.ordinal());
-        final MySeasonEnum winter = MySeasonEnum.WINTER;
-        System.out.println("winter name: " + winter.name());
-        System.out.println("winter ordinal: " + winter.ordinal());
 
     }
 }
